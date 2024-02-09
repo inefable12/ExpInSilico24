@@ -1,0 +1,36 @@
+digraph proceso_decoraciones {
+  #rankdir=LR;
+  node [shape=box];
+
+ subgraph cluster_1 {
+    label = "Base de datos de hierro-NPs";
+    #style = filled;
+    #color = lightgrey;
+
+    A [label="PeruNPDB, NaturAr, NuBBE"];
+    B [label="Filtrado de grupos funcionales: \nHidroxamatos & catecolatos"];
+    C [label="Formación de complejos \n[Fe-NPs] usando MolSimplify"];
+    D [label="Generación de estructuras 3D\noptimizadas con XTB"];
+  }
+
+  subgraph cluster_2 {
+    label = "Unsupervised Machine Learning";
+    #style = filled;
+    #color = lightgrey;
+
+    E [label="Obtención de descriptores químicos \n3D con RDKit & la suite schrodinger"];
+    F [label="Reducción de la dimensionalidad, \nPCA, KMeans, DBSCAN"];
+    G [label="Virtual screening de agrupamientos \nmediante docking molecular en \nreceptores de membrana con Vina/Glide"];
+    H [label="Discusiones y conclusiones \n[Opcional] Dinámica molecular "];
+  }
+
+  // Conexiones entre nodos
+  A -> B;
+  B -> C;
+  C -> D;
+  #D -> E;
+  E -> F;
+  F -> G;
+  G -> H;
+}
+

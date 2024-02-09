@@ -1,0 +1,29 @@
+digraph proceso_decoraciones {
+  node [shape=box];
+
+ subgraph cluster_1 {
+    label = "Potenciales anticancerígenos";
+    A [label="PeruNPDB, NaturAr, NuBBE"];
+    B [label="Filtrado de grupos funcionales: \nHidroxamatos & catecolatos**"];
+    C [label="Formación de base \nde datos en SMILES"];
+    D [label="Pre-optimización 3D \ncon Open Babel"];
+  }
+
+  subgraph cluster_2 {
+    label = "Deep Learning";
+    E [label="Obtención de descriptores químicos \n3D con RDKit, Padel, Mordred, etc"];
+    F [label="Preparación de proteínas y docking \nmolecular (para predicción de score)"];
+    G [label="Evaluación de métricas \npara MIMO y ANN"];
+    H [label="Discusiones y conclusiones \n[Opcional] Fase producción"];
+  }
+
+  // Conexiones entre nodos
+  A -> B;
+  B -> C;
+  C -> D;
+
+  E -> F;
+  F -> G;
+  G -> H;
+}
+
