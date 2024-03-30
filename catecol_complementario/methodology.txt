@@ -1,0 +1,43 @@
+digraph proceso_decoraciones {
+  rankdir=LR;
+  node [shape=box, style=rounded];
+
+ {
+    A [label="PeruNPDB \nDatabase"];
+    B [label="Database\n in SMILES"];
+    C [label="3D Ligands"];
+    D [label="GPX4\n protein"];
+    E [label="Molecular \n docking"];
+    H [label="Docking score \n (FEB)"]
+    F [label="Descriptors"];
+    G [label="Dataset \nX: Descriptors \n(83x1024) \n Y: FEB \n(83x1)"];
+    L [label="Dataset* \n 83 x 737"];
+    I [label="Dataset split: \n80% train \n& 20% test"];
+    J [label="Metrics"]
+    K [label="RFE: 131 \n descriptors"]
+  }
+
+  // Conexiones entre nodos
+  A -> B[label="Catechol"];
+  B -> C[label=" \n Open Babel"];
+  B -> F[label="Padel"];
+  C -> E;
+  D -> E[label="MGL\n Tools"];
+  E -> H[label="Autodock\n Vina"];
+  F -> G[label="EDA"];
+  H -> G;
+  G -> L[label="Preprocessing"];
+  L -> I;
+  I -> J[label="ANN"];
+  L -> K
+  K -> I
+  {
+    rank=same;
+    A -> B [style=invis];
+    #E -> H [style=invis]; 
+    #H -> G [style=invis]; 
+    F -> G [style=invis]; 
+    #L -> K [style=invis]; 
+    #K -> I [style=invis];
+  }
+}
